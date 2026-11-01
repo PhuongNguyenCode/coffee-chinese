@@ -180,9 +180,15 @@ const ARRANGE_TEMPLATES = [
 
 // Quiz generation functions
 const QuizGenerator = (() => {
+  function _sampleWords(words, count) {
+    if (!words.length || count <= 0) return [];
+    const shuffled = App.shuffleArray(words);
+    return Array.from({ length: count }, (_, index) => shuffled[index % shuffled.length]);
+  }
+
   function generateCnToVi(words, count = 10) {
     const questions = [];
-    const shuffled = App.shuffleArray(words).slice(0, count);
+    const shuffled = _sampleWords(words, count);
 
     shuffled.forEach(word => {
       const otherWords = words.filter(w => w.id !== word.id);
@@ -205,7 +211,7 @@ const QuizGenerator = (() => {
 
   function generateViToCn(words, count = 10) {
     const questions = [];
-    const shuffled = App.shuffleArray(words).slice(0, count);
+    const shuffled = _sampleWords(words, count);
 
     shuffled.forEach(word => {
       const otherWords = words.filter(w => w.id !== word.id);
@@ -227,7 +233,7 @@ const QuizGenerator = (() => {
 
   function generatePinyinToCn(words, count = 10) {
     const questions = [];
-    const shuffled = App.shuffleArray(words).slice(0, count);
+    const shuffled = _sampleWords(words, count);
 
     shuffled.forEach(word => {
       const otherWords = words.filter(w => w.id !== word.id);
@@ -250,7 +256,7 @@ const QuizGenerator = (() => {
 
   function generateListening(words, count = 10) {
     const questions = [];
-    const shuffled = App.shuffleArray(words).slice(0, count);
+    const shuffled = _sampleWords(words, count);
 
     shuffled.forEach(word => {
       const otherWords = words.filter(w => w.id !== word.id);
@@ -275,21 +281,31 @@ const QuizGenerator = (() => {
   }
 
   function generateFillBlank(count = 10) {
-    return App.shuffleArray(FILL_BLANK_TEMPLATES).slice(0, Math.min(count, FILL_BLANK_TEMPLATES.length));
+    const templates = App.shuffleArray(FILL_BLANK_TEMPLATES);
+    if (templates.length === 0) return [];
+    return Array.from({ length: Math.max(0, count) }, (_, index) => ({
+      type: QUIZ_TYPES.FILL_BLANK,
+      ...templates[index % templates.length]
+    }));
   }
 
   function generateArrange(count = 10) {
-    return App.shuffleArray(ARRANGE_TEMPLATES).slice(0, Math.min(count, ARRANGE_TEMPLATES.length)).map(t => ({
-      type: QUIZ_TYPES.ARRANGE,
-      ...t,
-      words: App.shuffleArray(t.words)
-    }));
+    const templates = App.shuffleArray(ARRANGE_TEMPLATES);
+    if (templates.length === 0) return [];
+    return Array.from({ length: Math.max(0, count) }, (_, index) => {
+      const template = templates[index % templates.length];
+      return {
+        type: QUIZ_TYPES.ARRANGE,
+        ...template,
+        words: App.shuffleArray(template.words)
+      };
+    });
   }
 
   function generateImageVocab(words, count = 10) {
     const wordsWithIcons = words.filter(w => w.icon);
     const questions = [];
-    const shuffled = App.shuffleArray(wordsWithIcons).slice(0, count);
+    const shuffled = _sampleWords(wordsWithIcons, count);
 
     shuffled.forEach(word => {
       const otherWords = wordsWithIcons.filter(w => w.id !== word.id);
@@ -311,13 +327,13 @@ const QuizGenerator = (() => {
   }
 
   function generateMixed(words, count = 15) {
-    const perType = Math.max(2, Math.floor(count / 5));
+    const perType = Math.max(1, Math.ceil(count / 5));
     let questions = [
       ...generateCnToVi(words, perType),
       ...generateViToCn(words, perType),
       ...generatePinyinToCn(words, perType),
-      ...generateFillBlank(2),
-      ...generateArrange(2)
+      ...generateFillBlank(perType),
+      ...generateArrange(perType)
     ];
     return App.shuffleArray(questions).slice(0, count);
   }

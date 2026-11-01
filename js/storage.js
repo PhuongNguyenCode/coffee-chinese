@@ -18,10 +18,17 @@ const StorageManager = (() => {
     FLASHCARD_PROGRESS: PREFIX + 'flashcard_progress'
   };
 
+  function _dateKey(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
   const DEFAULTS = {
     [KEYS.PROFILE]: {
       name: 'Người học',
-      startDate: new Date().toISOString().split('T')[0],
+      startDate: _dateKey(),
       dailyGoal: 10,
       currentLevel: 1
     },
@@ -202,13 +209,13 @@ const StorageManager = (() => {
   function getDailyStudy() { return _get(KEYS.DAILY_STUDY); }
 
   function getTodayStudy() {
-    const today = new Date().toISOString().split('T')[0];
+    const today = _dateKey();
     const daily = getDailyStudy();
     return daily[today] || { wordsLearned: 0, lessonsCompleted: 0, quizzesTaken: 0 };
   }
 
   function _recordDailyActivity(type) {
-    const today = new Date().toISOString().split('T')[0];
+    const today = _dateKey();
     _update(KEYS.DAILY_STUDY, (daily) => {
       if (!daily[today]) {
         daily[today] = { wordsLearned: 0, lessonsCompleted: 0, quizzesTaken: 0 };
@@ -222,13 +229,13 @@ const StorageManager = (() => {
   function getStreak() { return _get(KEYS.STREAK); }
 
   function _updateStreak() {
-    const today = new Date().toISOString().split('T')[0];
+    const today = _dateKey();
     _update(KEYS.STREAK, (streak) => {
       if (streak.lastStudyDate === today) return streak;
 
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
-      const yesterdayStr = yesterday.toISOString().split('T')[0];
+      const yesterdayStr = _dateKey(yesterday);
 
       if (streak.lastStudyDate === yesterdayStr) {
         streak.currentStreak += 1;
@@ -274,12 +281,31 @@ const StorageManager = (() => {
   function importAllData(jsonString) {
     try {
       const data = JSON.parse(jsonString);
-      if (!data._version) throw new Error('Invalid backup file');
-      Object.entries(KEYS).forEach(([name, key]) => {
-        if (data[name] !== undefined) {
-          _set(key, data[name]);
-        }
-      });
+      if (!data || typeof data !== 'object' || Array.isArray(data) || typeof data._version !== 'string') {
+        throw new Error('Invalid backup file');
+      }
+
+      const isObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+      const validators = {
+        PROFILE: isObject,
+        VOCAB_PROGRESS: isObject,
+        COMPLETED_LESSONS: Array.isArray,
+        FAVORITES: Array.isArray,
+        QUIZ_HISTORY: Array.isArray,
+        DAILY_STUDY: isObject,
+        STREAK: isObject,
+        SETTINGS: isObject,
+        FLASHCARD_PROGRESS: isObject
+      };
+      const entries = Object.entries(KEYS).filter(([name]) => Object.prototype.hasOwnProperty.call(data, name));
+      if (entries.length === 0 || entries.some(([name]) => !validators[name](data[name]))) {
+        throw new Error('Invalid backup data');
+      }
+      if (!_isAvailable()) return false;
+
+      for (const [name, key] of entries) {
+        if (!_set(key, data[name])) return false;
+      }
       return true;
     } catch (e) {
       console.error('Import failed:', e);
@@ -299,7 +325,7 @@ const StorageManager = (() => {
     for (let i = days - 1; i >= 0; i--) {
       const d = new Date();
       d.setDate(d.getDate() - i);
-      const dateStr = d.toISOString().split('T')[0];
+      const dateStr = _dateKey(d);
       result.push({
         date: dateStr,
         label: d.toLocaleDateString('vi-VN', { weekday: 'short' }),

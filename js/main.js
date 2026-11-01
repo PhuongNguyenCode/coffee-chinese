@@ -181,7 +181,7 @@ const App = (() => {
   }
 
   function getHSKLabel(level) {
-    if (typeof level === 'string' && level.toLowerCase() === 'coffee') return 'Coffee';
+    if (typeof level === 'string' && level.toLowerCase() === 'coffee') return 'Bổ sung · Cà phê';
     return `HSK ${level}`;
   }
 

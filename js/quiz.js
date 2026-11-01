@@ -49,7 +49,7 @@ const QuizApp = (() => {
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="quizLevelSelect">Cấp độ HSK:</label>
+              <label class="form-label" for="quizLevelSelect">HSK 2015 / Bổ sung:</label>
             <select id="quizLevelSelect" class="form-select">
               <option value="all">Tất cả cấp độ</option>
               <option value="1">HSK 1</option>
@@ -58,7 +58,7 @@ const QuizApp = (() => {
               <option value="4">HSK 4</option>
               <option value="5">HSK 5</option>
               <option value="6">HSK 6</option>
-              <option value="coffee">☕ Từ vựng Cà phê chuyên sâu</option>
+              <option value="coffee">☕ Từ bổ sung · Cà phê</option>
             </select>
           </div>
           <div class="form-group">

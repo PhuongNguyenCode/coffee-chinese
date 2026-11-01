@@ -31,7 +31,7 @@ const VocabularyPage = (() => {
       { value: '4', label: 'HSK 4' },
       { value: '5', label: 'HSK 5' },
       { value: '6', label: 'HSK 6' },
-      { value: 'coffee', label: '☕ Coffee' }
+      { value: 'coffee', label: '☕ Từ bổ sung · Cà phê' }
     ];
 
     const topicOptions = [{ value: 'all', label: 'Tất cả chủ đề' }];
@@ -46,7 +46,7 @@ const VocabularyPage = (() => {
           <input type="text" id="vocabSearch" class="form-input" placeholder="Tìm kiếm tiếng Trung, Pinyin hoặc tiếng Việt..." aria-label="Tìm kiếm từ vựng">
         </div>
         <div class="filter-group">
-          <label for="hskFilter" class="filter-label">HSK:</label>
+          <label for="hskFilter" class="filter-label">HSK 2015 / Bổ sung:</label>
           <select id="hskFilter" class="form-select" aria-label="Lọc theo HSK">
             ${hskOptions.map(o => `<option value="${o.value}">${o.label}</option>`).join('')}
           </select>
@@ -153,7 +153,8 @@ const VocabularyPage = (() => {
     const learnedCount = filteredWords.filter(w => StorageManager.isWordLearned(w.id)).length;
 
     if (infoEl) {
-      infoEl.textContent = `Hiển thị ${start + 1}–${Math.min(end, totalWords)} / ${totalWords} từ vựng · ${learnedCount} đã học`;
+      const displayStart = totalWords === 0 ? 0 : start + 1;
+      infoEl.textContent = `Hiển thị ${displayStart}–${Math.min(end, totalWords)} / ${totalWords} từ vựng · ${learnedCount} đã học`;
     }
 
     if (pageWords.length === 0) {
@@ -163,6 +164,8 @@ const VocabularyPage = (() => {
           <h3>Không tìm thấy từ vựng</h3>
           <p>Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm.</p>
         </div>`;
+      const paginationContainer = document.getElementById('vocabPagination');
+      if (paginationContainer) paginationContainer.innerHTML = '';
       return;
     }
 

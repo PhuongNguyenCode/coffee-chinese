@@ -33,18 +33,18 @@ const Navigation = (() => {
 
     const navItems = [
       { id: 'index', label: 'Home', href: `${base}index.html`, icon: '☕' },
-      { id: 'vocabulary', label: 'Vocabulary', href: `${base}${page}vocabulary.html`, icon: '📖' },
-      { id: 'lessons', label: 'Lessons', href: `${base}${page}lessons.html`, icon: '📚' },
+      { id: 'vocabulary', label: 'Vocabulary', href: `${page}vocabulary.html`, icon: '📖' },
+      { id: 'lessons', label: 'Lessons', href: `${page}lessons.html`, icon: '📚' },
       {
         id: 'practice', label: 'Practice', icon: '✏️', dropdown: [
-          { id: 'flashcards', label: 'Flashcards', href: `${base}${page}flashcards.html`, icon: '🃏' },
-          { id: 'quiz', label: 'Quiz', href: `${base}${page}quiz.html`, icon: '❓' },
-          { id: 'listening', label: 'Listening', href: `${base}${page}listening.html`, icon: '🎧' },
-          { id: 'conversation', label: 'Conversation', href: `${base}${page}conversation.html`, icon: '💬' },
-          { id: 'writing', label: 'Writing', href: `${base}${page}writing.html`, icon: '✍️' }
+          { id: 'flashcards', label: 'Flashcards', href: `${page}flashcards.html`, icon: '🃏' },
+          { id: 'quiz', label: 'Quiz', href: `${page}quiz.html`, icon: '❓' },
+          { id: 'listening', label: 'Listening', href: `${page}listening.html`, icon: '🎧' },
+          { id: 'conversation', label: 'Conversation', href: `${page}conversation.html`, icon: '💬' },
+          { id: 'writing', label: 'Writing', href: `${page}writing.html`, icon: '✍️' }
         ]
       },
-      { id: 'progress', label: 'Progress', href: `${base}${page}progress.html`, icon: '📊' }
+      { id: 'progress', label: 'Progress', href: `${page}progress.html`, icon: '📊' }
     ];
 
     const practicePages = ['flashcards', 'quiz', 'listening', 'conversation', 'writing'];
@@ -97,10 +97,10 @@ const Navigation = (() => {
 
     // Add favorites and profile to mobile
     mobileLinksHTML += `
-      <a href="${base}${page}favorites.html" class="mobile-nav-link ${current === 'favorites' ? 'active' : ''}">
+      <a href="${page}favorites.html" class="mobile-nav-link ${current === 'favorites' ? 'active' : ''}">
         <span class="link-icon">❤️</span> Favorites
       </a>
-      <a href="${base}${page}profile.html" class="mobile-nav-link ${current === 'profile' ? 'active' : ''}">
+      <a href="${page}profile.html" class="mobile-nav-link ${current === 'profile' ? 'active' : ''}">
         <span class="link-icon">👤</span> Profile
       </a>`;
 
@@ -112,8 +112,8 @@ const Navigation = (() => {
         </a>
         <div class="nav-links">
           ${linksHTML}
-          <a href="${base}${page}favorites.html" class="nav-link ${current === 'favorites' ? 'active' : ''}" data-tooltip="Favorites">❤️</a>
-          <a href="${base}${page}profile.html" class="nav-link ${current === 'profile' ? 'active' : ''}" data-tooltip="Profile">👤</a>
+          <a href="${page}favorites.html" class="nav-link ${current === 'favorites' ? 'active' : ''}" data-tooltip="Favorites">❤️</a>
+          <a href="${page}profile.html" class="nav-link ${current === 'profile' ? 'active' : ''}" data-tooltip="Profile">👤</a>
         </div>
         <button class="nav-mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -154,7 +154,8 @@ const Navigation = (() => {
       const trigger = dd.querySelector('.nav-link');
       trigger.addEventListener('click', (e) => {
         e.preventDefault();
-        dd.classList.toggle('open');
+        const isOpen = dd.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', String(isOpen));
       });
     });
 
@@ -163,6 +164,8 @@ const Navigation = (() => {
       dropdowns.forEach(dd => {
         if (!dd.contains(e.target)) {
           dd.classList.remove('open');
+          const trigger = dd.querySelector('.nav-link');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
         }
       });
     });
@@ -188,26 +191,26 @@ const Navigation = (() => {
           <div class="footer-column">
             <h4>Learn</h4>
             <ul>
-              <li><a href="${base}${page}vocabulary.html">Vocabulary</a></li>
-              <li><a href="${base}${page}lessons.html">Lessons</a></li>
-              <li><a href="${base}${page}flashcards.html">Flashcards</a></li>
-              <li><a href="${base}${page}quiz.html">Quiz</a></li>
+              <li><a href="${page}vocabulary.html">Vocabulary</a></li>
+              <li><a href="${page}lessons.html">Lessons</a></li>
+              <li><a href="${page}flashcards.html">Flashcards</a></li>
+              <li><a href="${page}quiz.html">Quiz</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Practice</h4>
             <ul>
-              <li><a href="${base}${page}listening.html">Listening</a></li>
-              <li><a href="${base}${page}conversation.html">Conversation</a></li>
-              <li><a href="${base}${page}writing.html">Writing</a></li>
-              <li><a href="${base}${page}progress.html">Progress</a></li>
+              <li><a href="${page}listening.html">Listening</a></li>
+              <li><a href="${page}conversation.html">Conversation</a></li>
+              <li><a href="${page}writing.html">Writing</a></li>
+              <li><a href="${page}progress.html">Progress</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h4>Account</h4>
             <ul>
-              <li><a href="${base}${page}favorites.html">Favorites</a></li>
-              <li><a href="${base}${page}profile.html">Profile</a></li>
+              <li><a href="${page}favorites.html">Favorites</a></li>
+              <li><a href="${page}profile.html">Profile</a></li>
             </ul>
           </div>
         </div>

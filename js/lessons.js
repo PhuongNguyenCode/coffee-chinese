@@ -119,8 +119,8 @@ const LessonsPage = (() => {
     const vocabCount = lesson.vocabularyIds ? lesson.vocabularyIds.length : 0;
 
     return `
-      <a href="lesson-detail.html?id=${lesson.id}" class="lesson-card" style="text-decoration:none;color:inherit;">
-        <div class="lesson-card-image" style="background:linear-gradient(135deg, var(--espresso), var(--coffee-brown));">
+      <a href="lesson-detail.html?id=${lesson.id}" class="lesson-card" data-level="${lesson.level}" style="text-decoration:none;color:inherit;">
+        <div class="lesson-card-image">
           <span style="font-size:3rem;">${lesson.icon || '📖'}</span>
         </div>
         <div class="lesson-card-body">
@@ -441,7 +441,7 @@ const LessonDetail = (() => {
           <div style="display:flex;justify-content:space-between;margin-top:var(--space-6);">
             <button class="btn btn-ghost" ${idx === 0 ? 'disabled' : ''} onclick="LessonDetail._exerciseNav(${idx - 1})">← Trước</button>
             ${idx === exercises.length - 1 ? 
-              `<button class="btn btn-primary" onclick="LessonDetail.completeLesson()">Hoàn thành bài học ✓</button>` :
+              `<button class="btn btn-primary" ${!isAnswered ? 'disabled' : ''} onclick="LessonDetail.completeLesson()">Hoàn thành bài học ✓</button>` :
               `<button class="btn btn-primary" ${!isAnswered ? 'disabled' : ''} onclick="LessonDetail._exerciseNav(${idx + 1})">Tiếp theo →</button>`
             }
           </div>
@@ -487,6 +487,7 @@ const LessonDetail = (() => {
 
     LessonDetail._exerciseNav = (idx) => {
       currentEx = idx;
+      arrangeWords = [];
       renderExercise(idx);
     };
 

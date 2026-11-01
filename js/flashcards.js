@@ -30,7 +30,7 @@ const FlashcardsApp = (() => {
       { value: '4', label: 'HSK 4' },
       { value: '5', label: 'HSK 5' },
       { value: '6', label: 'HSK 6' },
-      { value: 'coffee', label: '☕ Chuyên ngành Cà phê' }
+      { value: 'coffee', label: '☕ Từ bổ sung · Cà phê' }
     ];
 
     const topicOptions = [{ value: 'all', label: 'Tất cả chủ đề' }];
@@ -41,7 +41,7 @@ const FlashcardsApp = (() => {
     filterContainer.innerHTML = `
       <div class="filter-bar justify-center">
         <div class="filter-group">
-          <label for="fcHskFilter" class="filter-label">Cấp độ:</label>
+          <label for="fcHskFilter" class="filter-label">HSK 2015 / Bổ sung:</label>
           <select id="fcHskFilter" class="form-select">
             ${hskOptions.map(o => `<option value="${o.value}">${o.label}</option>`).join('')}
           </select>
