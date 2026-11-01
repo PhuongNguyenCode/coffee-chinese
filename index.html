@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COFFEE 中文 – Nền tảng học tiếng Trung cao cấp kết hợp văn hóa cà phê đặc sản. Làm chủ HSK 1 đến HSK 6 qua nghệ thuật pha chế, thưởng thức và giao tiếp thực tế.">
+  <title>COFFEE 中文 – Học Tiếng Trung Qua Văn Hóa Cà Phê</title>
+
+  <!-- Google Fonts CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <!-- Core Design System Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* ============================================================
+       HOMEPAGE SPECIFIC ENHANCEMENTS
+       Premium Editorial Specialty Coffee Experience
+       ============================================================ */
+
+    /* Hero Styling & Pure CSS Coffee Atmosphere */
+    .hero {
+      position: relative;
+      min-height: 94vh;
+      display: flex;
+      align-items: center;
+      background-color: var(--espresso);
+      background: 
+        radial-gradient(circle at 82% 24%, rgba(184, 121, 69, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 18% 78%, rgba(75, 48, 40, 0.45) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 40%, rgba(58, 42, 36, 0.7) 0%, transparent 75%),
+        linear-gradient(155deg, #18110E 0%, #251A16 40%, #35231D 75%, #4B3028 100%);
+      overflow: hidden;
+      padding: calc(var(--nav-height) + var(--space-12)) 0 var(--space-16);
+    }
+
+    /* Abstract Coffee Bean shapes via CSS */
+    .hero-deco-bean {
+      position: absolute;
+      border-radius: 50% / 60% 60% 40% 40%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.16;
+      box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-deco-bean::before {
+      content: "";
+      position: absolute;
+      top: 15%;
+      bottom: 15%;
+      left: 50%;
+      width: 4px;
+      background: var(--latte);
+      border-radius: 50%;
+      transform: translateX(-50%) rotate(5deg);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-deco-bean-1 {
+      width: 170px;
+      height: 240px;
+      background: radial-gradient(circle at 35% 35%, #D9B99B, #3A2A24);
+      top: 10%;
+      right: 6%;
+      transform: rotate(32deg);
+      animation: floatBean1 9s ease-in-out infinite alternate;
+    }
+
+    .hero-deco-bean-2 {
+      width: 110px;
+      height: 155px;
+      background: radial-gradient(circle at 35% 35%, #B87945, #251A16);
+      bottom: 12%;
+      right: 20%;
+      transform: rotate(-24deg);
+      animation: floatBean2 11s ease-in-out infinite alternate;
+    }
+
+    .hero-deco-bean-3 {
+      width: 130px;
+      height: 185px;
+      background: radial-gradient(circle at 35% 35%, #8C8077, #251A16);
+      top: 48%;
+      left: -45px;
+      transform: rotate(45deg);
+      opacity: 0.09;
+    }
+
+    /* Watermark Concentric Cup Rings */
+    .hero-cup-ring {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 1px solid rgba(217, 185, 155, 0.08);
+      box-shadow: 
+        0 0 0 25px rgba(184, 121, 69, 0.025),
+        0 0 0 65px rgba(217, 185, 155, 0.015);
+      top: 52%;
+      right: -80px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes floatBean1 {
+      0% { transform: rotate(32deg) translateY(0px); }
+      100% { transform: rotate(36deg) translateY(-22px); }
+    }
+
+    @keyframes floatBean2 {
+      0% { transform: rotate(-24deg) translateY(0px); }
+      100% { transform: rotate(-18deg) translateY(18px); }
+    }
+
+    /* Hero CTA & Typography Enhancements */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: var(--space-6);
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .accent {
+      color: var(--latte);
+      font-style: italic;
+      font-family: var(--font-heading);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--latte-light);
+      line-height: 1.7;
+      margin-bottom: var(--space-10);
+      max-width: 640px;
+      opacity: 0.92;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .hero-actions .btn {
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      gap: var(--space-10);
+      margin-top: var(--space-12);
+      padding-top: var(--space-8);
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-value {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .hero-stat-label {
+      font-size: var(--text-xs);
+      color: var(--latte);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: var(--space-2);
+      opacity: 0.85;
+    }
+
+    /* Daily Learning Section */
+    .daily-learning-section {
+      padding: var(--space-10) 0 var(--space-16);
+      margin-top: -45px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .daily-learning-card {
+      background: var(--white);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8) var(--space-10);
+      box-shadow: 0 20px 40px rgba(37, 26, 22, 0.1);
+      border: 1px solid rgba(217, 185, 155, 0.35);
+    }
+
+    .daily-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .daily-title {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-1);
+    }
+
+    .daily-subtitle {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .daily-stat-box {
+      background: var(--cream);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      border: 1px solid transparent;
+      transition: all var(--transition-base);
+    }
+
+    .daily-stat-box:hover {
+      background: var(--white);
+      border-color: var(--latte);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .daily-stat-icon {
+      font-size: var(--text-2xl);
+    }
+
+    .daily-stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .daily-stat-num {
+      font-family: var(--font-heading);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      color: var(--espresso);
+      line-height: 1.1;
+    }
+
+    .daily-stat-name {
+      font-size: var(--text-xs);
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: var(--space-1);
+    }
+
+    .daily-goal-bar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      margin-top: var(--space-1);
+    }
+
+    .daily-goal-text {
+      font-size: var(--text-xs);
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .daily-actions-wrapper {
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .daily-actions-label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--coffee-brown);
+    }
+
+    .daily-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    /* HSK Cards Section */
+    .hsk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .hsk-card {
+      background-color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-base);
+      border-left: 5px solid transparent;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+
+    .hsk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hsk-card-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+    }
+
+    .hsk-number-label {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--espresso);
+    }
+
+    .hsk-card-title {
+      font-size: var(--text-lg);
+      font-family: var(--font-heading);
+      color: var(--espresso);
+      margin-bottom: var(--space-2);
+      line-height: 1.3;
+    }
+
+    .hsk-card-desc {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-5);
+      flex: 1;
+    }
+
+    .hsk-progress-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-xs);
+      color: var(--muted);
+      margin-bottom: var(--space-2);
+      font-weight: 500;
+    }
+
+    /* Lesson Card Additions */
+    .lesson-card-image {
+      background: linear-gradient(135deg, var(--espresso) 0%, var(--coffee-brown) 100%);
+      color: var(--latte);
+      position: relative;
+    }
+
+    .lesson-completed-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: var(--success);
+      color: var(--white);
+      font-size: var(--text-xs);
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    /* Animated Stat Cards */
+    .stat-card {
+      transition: all var(--transition-base);
+      border: 1px solid transparent;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--latte);
+    }
+
+    /* Editorial Culture Cards */
+    .culture-card {
+      background-color: var(--white);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(217, 185, 155, 0.35);
+      position: relative;
+    }
+
+    .culture-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--latte);
+    }
+
+    .culture-card-header {
+      padding: var(--space-8) var(--space-8) var(--space-4);
+      background: linear-gradient(180deg, rgba(247, 241, 232, 0.7) 0%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .culture-icon-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--cream-dark);
+    }
+
+    .culture-tag {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--caramel);
+    }
+
+    .culture-card-body {
+      padding: var(--space-4) var(--space-8) var(--space-8);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .culture-chinese-sub {
+      font-family: var(--font-chinese);
+      font-size: var(--text-sm);
+      color: var(--caramel-dark);
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .culture-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      color: var(--espresso);
+      margin-bottom: var(--space-4);
+      line-height: 1.3;
+    }
+
+    .culture-desc {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-5);
+      flex: 1;
+    }
+
+    .culture-quote {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: var(--text-sm);
+      color: var(--coffee-brown);
+      border-left: 2px solid var(--caramel);
+      padding: var(--space-3) var(--space-4);
+      margin-bottom: var(--space-6);
+      background: rgba(247, 241, 232, 0.5);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      line-height: 1.5;
+    }
+
+    /* CTA Editorial Strip */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--espresso) 0%, var(--coffee-brown) 100%);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-8);
+      text-align: center;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      margin: var(--space-16) 0 var(--space-8);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(184, 121, 69, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      color: var(--white);
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-3);
+    }
+
+    .cta-banner p {
+      color: var(--latte);
+      font-size: var(--text-base);
+      max-width: 580px;
+      margin: 0 auto var(--space-8);
+      opacity: 0.9;
+    }
+
+    /* Word Detail Modal Specifics */
+    .modal-char-display {
+      text-align: center;
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--cream-dark);
+      margin-bottom: var(--space-6);
+    }
+
+    .modal-char-chinese {
+      font-family: var(--font-chinese);
+      font-size: 3.8rem;
+      font-weight: 600;
+      color: var(--espresso);
+      line-height: 1.1;
+    }
+
+    .modal-char-pinyin {
+      font-size: var(--text-xl);
+      color: var(--caramel);
+      font-style: italic;
+      margin-top: var(--space-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .modal-char-meaning {
+      font-size: var(--text-lg);
+      color: var(--coffee-brown);
+      font-weight: 600;
+      margin-top: var(--space-3);
+    }
+
+    .modal-example-box {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      border-left: 3px solid var(--caramel);
+      margin-top: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Component rendered by navigation.js / App.init() -->
+  <nav id="main-nav"></nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       Full-Screen Rich Coffee Gradients + CSS Coffee Beans + Live Stats
+       ============================================================ -->
+  <header class="hero" id="hero">
+    <!-- Pure CSS Coffee Bean Shapes and Atmospheric Watermark -->
+    <div class="hero-deco-bean hero-deco-bean-1" aria-hidden="true"></div>
+    <div class="hero-deco-bean hero-deco-bean-2" aria-hidden="true"></div>
+    <div class="hero-deco-bean hero-deco-bean-3" aria-hidden="true"></div>
+    <div class="hero-cup-ring" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+      <div class="hero-label animate-fade-in-up delay-1">
+        <span>☕</span>
+        <span>Premium Chinese Learning Platform</span>
+      </div>
+
+      <h1 class="animate-fade-in-up delay-2">
+        A New Way to Learn <span class="accent">Chinese</span>.
+      </h1>
+
+      <p class="hero-subtitle animate-fade-in-up delay-3">
+        Explore the language of coffee, one word at a time. Master Chinese from HSK 1 to HSK 6 through the art and culture of specialty coffee.
+      </p>
+
+      <div class="hero-actions animate-fade-in-up delay-4">
+        <a href="pages/lessons.html" class="btn btn-primary btn-lg">
+          <span>Start Learning</span>
+          <span style="font-size: 1.2em;">→</span>
+        </a>
+        <a href="pages/vocabulary.html" class="btn btn-secondary btn-lg">
+          <span>Explore Vocabulary</span>
+        </a>
+      </div>
+
+      <!-- Live Dynamic Stats Row -->
+      <div class="hero-stats animate-fade-in-up delay-5">
+        <div class="hero-stat-item">
+          <div class="hero-stat-value" id="hero-words-stat">--</div>
+          <div class="hero-stat-label">Words Available</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value" id="hero-lessons-stat">--</div>
+          <div class="hero-stat-label">Structured Lessons</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value" id="hero-levels-stat">6 Levels</div>
+          <div class="hero-stat-label">HSK 1 to HSK 6</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       DAILY LEARNING SECTION
+       Real-time stats from StorageManager & Fast Actions
+       ============================================================ -->
+  <section class="daily-learning-section scroll-animate" id="daily-learning" aria-label="Tiến độ học hôm nay">
+    <div class="container">
+      <div class="daily-learning-card">
+        <div class="daily-header">
+          <div>
+            <span class="section-label">Hôm Nay Của Bạn</span>
+            <h2 class="daily-title">Mục Tiêu Học Tập Hàng Ngày</h2>
+            <p class="daily-subtitle" id="daily-today-date">Nhâm nhi một tách cà phê và tích lũy từng từ vựng mỗi ngày.</p>
+          </div>
+          <div class="streak-display">
+            <span class="streak-icon">🔥</span>
+            <div>
+              <div class="streak-count" id="daily-streak-count">0 Ngày</div>
+              <div class="streak-label">Chuỗi Học Tập (Streak)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-3 gap-6">
+          <!-- Words Today -->
+          <div class="daily-stat-box">
+            <div class="daily-stat-icon">📖</div>
+            <div class="daily-stat-info">
+              <span class="daily-stat-num" id="daily-words-num">0</span>
+              <span class="daily-stat-name">Từ Vựng Đã Học Hôm Nay</span>
+            </div>
+            <div class="daily-goal-bar">
+              <div class="progress-bar progress-bar-sm">
+                <div class="progress-bar-fill" id="daily-words-bar" style="width: 0%;"></div>
+              </div>
+              <span class="daily-goal-text" id="daily-words-goal-text">Mục tiêu: 10 từ/ngày</span>
+            </div>
+          </div>
+
+          <!-- Lessons Today -->
+          <div class="daily-stat-box">
+            <div class="daily-stat-icon">📚</div>
+            <div class="daily-stat-info">
+              <span class="daily-stat-num" id="daily-lessons-num">0</span>
+              <span class="daily-stat-name">Bài Học Đã Hoàn Thành</span>
+            </div>
+            <div class="daily-goal-bar">
+              <div class="progress-bar progress-bar-sm">
+                <div class="progress-bar-fill" id="daily-lessons-bar" style="width: 0%;"></div>
+              </div>
+              <span class="daily-goal-text" id="daily-lessons-goal-text">Khuyên dùng: 1 bài/ngày</span>
+            </div>
+          </div>
+
+          <!-- Quizzes Today -->
+          <div class="daily-stat-box">
+            <div class="daily-stat-icon">🎯</div>
+            <div class="daily-stat-info">
+              <span class="daily-stat-num" id="daily-quizzes-num">0</span>
+              <span class="daily-stat-name">Bài Quiz Đã Làm</span>
+            </div>
+            <div class="daily-goal-bar">
+              <div class="progress-bar progress-bar-sm">
+                <div class="progress-bar-fill" id="daily-quizzes-bar" style="width: 0%;"></div>
+              </div>
+              <span class="daily-goal-text" id="daily-quizzes-goal-text">Rèn luyện phản xạ nhanh</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Action Shortcuts -->
+        <div class="daily-actions-wrapper">
+          <span class="daily-actions-label">Truy cập nhanh:</span>
+          <div class="daily-actions">
+            <a href="pages/flashcards.html" class="btn btn-secondary btn-sm">
+              <span>🃏 Lật Flashcard</span>
+            </a>
+            <a href="pages/lessons.html" class="btn btn-primary btn-sm">
+              <span>📚 Tiếp Tục Học</span>
+            </a>
+            <a href="pages/quiz.html" class="btn btn-caramel btn-sm">
+              <span>❓ Làm Quiz Ngay</span>
+            </a>
+            <a href="pages/listening.html" class="btn btn-ghost btn-sm">
+              <span>🎧 Luyện Nghe Cà Phê</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LEARNING PATHS SECTION
+       HSK 1-6 Cards with real progress bars
+       ============================================================ -->
+  <section class="section scroll-animate" id="learning-paths">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Lộ Trình Chuẩn HSK</span>
+        <h2>6 Cấp Độ Từ Hạt Mầm Đến Bậc Thầy</h2>
+        <p class="section-subtitle">
+          Chinh phục tiếng Trung chuẩn HSK 1 – HSK 6 thông qua những tình huống giao tiếp sống động trong thế giới cà phê specialty.
+        </p>
+      </div>
+
+      <div class="hsk-grid" id="hsk-cards-container">
+        <!-- Rendered dynamically by JavaScript with real user progress -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COFFEE VOCABULARY SECTION
+       8 Featured Cards with Audio, Favorites, Modal Details
+       ============================================================ -->
+  <section class="section scroll-animate" id="coffee-vocabulary" style="background-color: var(--white);">
+    <div class="container">
+      <div class="flex justify-between items-center mb-8 flex-wrap gap-4">
+        <div>
+          <span class="section-label">Từ Vựng Chọn Lọc</span>
+          <h2>Từ Vựng Cà Phê Tiêu Biểu</h2>
+          <p class="text-muted" style="margin-bottom: 0;">
+            Học chuẩn phát âm, ý nghĩa và ví dụ câu thực tế của các thuật ngữ Barista thông dụng.
+          </p>
+        </div>
+        <a href="pages/vocabulary.html" class="btn btn-secondary">
+          <span>Xem Tất Cả (View All)</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-4 gap-6" id="featured-vocab-container">
+        <!-- Injected via App.renderVocabCard() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURED LESSONS SECTION
+       4 Lesson Cards with icons, level badges, progress
+       ============================================================ -->
+  <section class="section scroll-animate" id="featured-lessons">
+    <div class="container">
+      <div class="flex justify-between items-center mb-8 flex-wrap gap-4">
+        <div>
+          <span class="section-label">Bài Học Chuyên Đề</span>
+          <h2>Bài Học Nổi Bật</h2>
+          <p class="text-muted" style="margin-bottom: 0;">
+            Trải nghiệm các kịch bản thực hành nhập vai từ quầy order đến bàn cupping chuyên nghiệp.
+          </p>
+        </div>
+        <a href="pages/lessons.html" class="btn btn-secondary">
+          <span>Xem Toàn Bộ Bài Học</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="grid grid-4 gap-6" id="featured-lessons-container">
+        <!-- Injected via JavaScript from LESSONS_DATA -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LEARNING STATISTICS SECTION
+       Live Stats from StorageManager with Counter Animation
+       ============================================================ -->
+  <section class="section scroll-animate" id="learning-stats" style="background-color: var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Thành Tích Cá Nhân</span>
+        <h2>Hành Trình Tích Lũy Của Bạn</h2>
+        <p class="section-subtitle">
+          Từng từ vựng và bài học bạn tích lũy sẽ hòa quyện như một tách cà phê thơm ngát trọn vẹn hương vị.
+        </p>
+      </div>
+
+      <div class="grid grid-4 gap-6">
+        <!-- Stat 1: Total Words Learned -->
+        <div class="stat-card">
+          <div class="stat-card-icon">📖</div>
+          <div class="stat-card-value" id="stats-total-words">0</div>
+          <div class="stat-card-label">Từ Vựng Đã Học</div>
+        </div>
+
+        <!-- Stat 2: Lessons Completed -->
+        <div class="stat-card">
+          <div class="stat-card-icon">🎓</div>
+          <div class="stat-card-value" id="stats-completed-lessons">0</div>
+          <div class="stat-card-label">Bài Học Hoàn Thành</div>
+        </div>
+
+        <!-- Stat 3: Average Quiz Score -->
+        <div class="stat-card">
+          <div class="stat-card-icon">🎯</div>
+          <div class="stat-card-value" id="stats-avg-quiz">0%</div>
+          <div class="stat-card-label">Điểm Quiz Trung Bình</div>
+        </div>
+
+        <!-- Stat 4: Study Streak -->
+        <div class="stat-card">
+          <div class="stat-card-icon">🔥</div>
+          <div class="stat-card-value" id="stats-streak-days">0 Ngày</div>
+          <div class="stat-card-label">Chuỗi Học Liên Tục</div>
+        </div>
+      </div>
+
+      <!-- Deep Dive CTA -->
+      <div class="text-center mt-8">
+        <a href="pages/progress.html" class="btn btn-caramel">
+          <span>📊 Xem Báo Cáo Phân Tích Chi Tiết</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COFFEE CULTURE SECTION
+       3 Editorial-Style Magazine Cards: Yunnan, Luckin, Tea to Coffee
+       ============================================================ -->
+  <section class="section scroll-animate" id="coffee-culture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Góc Văn Hóa (Editorial)</span>
+        <h2>Văn Hóa Cà Phê Trung Quốc Đương Đại</h2>
+        <p class="section-subtitle">
+          Khám phá câu chuyện đằng sau những vùng trồng trù phú, sự bùng nổ của chuỗi cà phê công nghệ và sự giao thoa văn hóa độc đáo.
+        </p>
+      </div>
+
+      <div class="grid grid-3 gap-8">
+        <!-- Card 1: Yunnan Coffee -->
+        <article class="culture-card">
+          <div class="culture-card-header">
+            <span class="culture-tag">Nguồn Gốc & Thổ Nhưỡng</span>
+            <div class="culture-icon-badge" title="Vùng Trồng Vân Nam">🏔️</div>
+          </div>
+          <div class="culture-card-body">
+            <div class="culture-chinese-sub">云南咖啡 · Yúnnán Kāfēi</div>
+            <h3 class="culture-title">Yunnan Coffee – Bí Mật Cao Nguyên Tây Nam</h3>
+            <p class="culture-desc">
+              Tỉnh Vân Nam chiếm tới hơn 98% sản lượng cà phê toàn Trung Quốc. Nằm trọn vẹn trong "Vành Đai Cà Phê" hoàng kim ở độ cao 1.200 – 1.600m, thổ nhưỡng núi lửa màu mỡ đã ban tặng cho hạt Catimor và Bourbon nơi đây hương hoa thanh nhã và vị ngọt quả mọng quyến rũ.
+            </p>
+            <div class="culture-quote">
+              “Bảo Sơn, Phổ Nhĩ, Lâm Thương – Tam giác vàng specialty coffee đang định hình lại bản đồ cà phê thế giới.”
+            </div>
+            <a href="pages/lessons.html?level=4" class="btn btn-ghost btn-sm" style="padding-left: 0;">
+              <span>Đọc bài học về Vân Nam</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 2: Luckin Coffee -->
+        <article class="culture-card">
+          <div class="culture-card-header">
+            <span class="culture-tag">Kỷ Nguyên Số Hóa</span>
+            <div class="culture-icon-badge" title="Cà Phê Công Nghệ">⚡</div>
+          </div>
+          <div class="culture-card-body">
+            <div class="culture-chinese-sub">瑞幸咖啡 · Ruìxìng Kāfēi</div>
+            <h3 class="culture-title">Luckin Coffee – Cơn Lốc Đổi Mới Cà Phê Số</h3>
+            <p class="culture-desc">
+              Luckin đã tái định nghĩa hoàn toàn thói quen tiêu dùng với ứng dụng di động 100%, thanh toán không tiền mặt và mô hình lấy đồ siêu tốc. Đặc biệt, món Cà Phê Sữa Dừa (生椰拿铁) đã trở thành hiện tượng văn hóa đại chúng với hàng trăm triệu cốc tiêu thụ mỗi năm.
+            </p>
+            <div class="culture-quote">
+              “Từ phong cách ngồi quán truyền thống đến trào lưu cầm ly cà phê sải bước trên phố đi bộ hiện đại.”
+            </div>
+            <a href="pages/lessons.html?level=3" class="btn btn-ghost btn-sm" style="padding-left: 0;">
+              <span>Khám phá từ vựng đặt món app</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 3: Tea to Coffee -->
+        <article class="culture-card">
+          <div class="culture-card-header">
+            <span class="culture-tag">Giao Thoa Văn Hóa</span>
+            <div class="culture-icon-badge" title="Từ Trà Đến Cà Phê">🍵</div>
+          </div>
+          <div class="culture-card-body">
+            <div class="culture-chinese-sub">从茶到咖啡 · Cóng Chá Dào Kāfēi</div>
+            <h3 class="culture-title">Từ Trà Đạo Đến Specialty Coffee</h3>
+            <p class="culture-desc">
+              Cái nôi ngàn năm của Trà Đạo đang chứng kiến cuộc chuyển dịch ngoạn mục. Thế hệ trẻ không chỉ tìm kiếm caffeine để tỉnh táo, mà đón nhận nghệ thuật pha Pour-over như một liệu pháp chánh niệm – nơi kỹ thuật rót nước và cảm thụ hương vị mang trọn tinh thần Trà thiền cổ điển.
+            </p>
+            <div class="culture-quote">
+              “Sự dung hòa hoàn hảo giữa vị chát thanh tao của trà truyền thống và tầng hương phức hợp của cà phê Arabica.”
+            </div>
+            <a href="pages/lessons.html?level=2" class="btn btn-ghost btn-sm" style="padding-left: 0;">
+              <span>Học đối thoại nếm thử hương vị</span>
+              <span>→</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Bottom Editorial Banner -->
+      <div class="cta-banner">
+        <h2>Sẵn Sàng Thưởng Thức Tiếng Trung Theo Phong Cách Mới?</h2>
+        <p>Bắt đầu từ một hạt cà phê nhỏ, mở ra cánh cửa ngôn ngữ và văn hóa rộng lớn cùng COFFEE 中文 ngay hôm nay.</p>
+        <div class="flex justify-center gap-4 flex-wrap">
+          <a href="pages/lessons.html" class="btn btn-primary btn-lg" style="background-color: var(--white); color: var(--espresso); border-color: var(--white);">
+            <span>Bắt Đầu Học Ngay (Free)</span>
+          </a>
+          <a href="pages/vocabulary.html" class="btn btn-secondary btn-lg" style="color: var(--white); border-color: rgba(255,255,255,0.4);">
+            <span>Tra Cứu Từ Vựng</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Word Detail Modal Component -->
+  <div id="word-detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-word-title">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-word-title">Chi Tiết Từ Vựng</h3>
+        <button class="modal-close" onclick="App.closeModal('word-detail-modal')" aria-label="Đóng hộp thoại">✕</button>
+      </div>
+      <div class="modal-body" id="word-detail-body">
+        <!-- Injected dynamically by showWordDetail() -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="App.closeModal('word-detail-modal')">Đóng</button>
+        <button id="modal-learn-toggle-btn" class="btn btn-primary">Đánh dấu đã học</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Component rendered by navigation.js / App.init() -->
+  <footer id="main-footer"></footer>
+
+  <!-- ============================================================
+       SCRIPT DEPENDENCIES
+       ============================================================ -->
+  <script src="data/vocabulary.js"></script>
+  <script src="data/lessons.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- ============================================================
+       HOMEPAGE SPECIFIC LOGIC
+       ============================================================ -->
+  <script>
+    /* Safe Fallback Datasets (Ensures page operates flawlessly if data scripts are loading or offline) */
+    const DEFAULT_COFFEE_VOCAB = [
+      {
+        id: 'vocab-01',
+        simplified: '咖啡',
+        traditional: '咖啡',
+        pinyin: 'kāfēi',
+        meaningVi: 'Cà phê',
+        hsk: 1,
+        type: 'Danh từ',
+        example: '我每天早晨都要喝一杯热咖啡。',
+        examplePinyin: 'Wǒ měitiān zǎochén dōu yào hē yī bēi rè kāfēi.',
+        exampleVi: 'Mỗi buổi sáng tôi đều phải uống một tách cà phê nóng.'
+      },
+      {
+        id: 'vocab-02',
+        simplified: '拿铁',
+        traditional: '拿鐵',
+        pinyin: 'nátiě',
+        meaningVi: 'Cà phê Latte',
+        hsk: 'coffee',
+        type: 'Danh từ',
+        example: '请给我一杯燕麦奶热拿铁，不加糖。',
+        examplePinyin: 'Qǐng gěi wǒ yī bēi yànmài nǎi rè nátiě, bù jiā táng.',
+        exampleVi: 'Cho tôi một ly latte nóng sữa yến mạch, không thêm đường.'
+      },
+      {
+        id: 'vocab-03',
+        simplified: '浓缩咖啡',
+        traditional: '濃縮咖啡',
+        pinyin: 'nóngsuō kāfēi',
+        meaningVi: 'Cà phê Espresso',
+        hsk: 'coffee',
+        type: 'Danh từ',
+        example: '意式浓缩咖啡是调制拿铁和卡布奇诺的基础。',
+        examplePinyin: 'Yìshì nóngsuō kāfēi shì tiáozhì nátiě hé kǎbùqínuò de jīchǔ.',
+        exampleVi: 'Espresso Ý là nền tảng để pha chế latte và cappuccino.'
+      },
+      {
+        id: 'vocab-04',
+        simplified: '卡布奇诺',
+        traditional: '卡布奇諾',
+        pinyin: 'kǎbùqínuò',
+        meaningVi: 'Cà phê Cappuccino',
+        hsk: 'coffee',
+        type: 'Danh từ',
+        example: '这杯卡布奇诺的奶泡非常绵密细致。',
+        examplePinyin: 'Zhè bēi kǎbùqínuò de nǎipào fēicháng miánmì xìzhì.',
+        exampleVi: 'Lớp bọt sữa của ly cappuccino này vô cùng mịn màng và tinh tế.'
+      },
+      {
+        id: 'vocab-05',
+        simplified: '咖啡豆',
+        traditional: '咖啡豆',
+        pinyin: 'kāfēidòu',
+        meaningVi: 'Hạt cà phê',
+        hsk: 2,
+        type: 'Danh từ',
+        example: '新鲜烘焙的咖啡豆散发着浓郁迷人的香气。',
+        examplePinyin: 'Xīnxiān hōngbèi de kāfēidòu sànfà zhe nóngyù mírén de xiāngqì.',
+        exampleVi: 'Hạt cà phê mới rang tỏa ra hương thơm đậm đà quyến rũ.'
+      },
+      {
+        id: 'vocab-06',
+        simplified: '手冲咖啡',
+        traditional: '手衝咖啡',
+        pinyin: 'shǒuchōng kāfēi',
+        meaningVi: 'Cà phê Pour-over (pha phễu giấy)',
+        hsk: 'coffee',
+        type: 'Danh từ',
+        example: '手冲咖啡能最纯粹地展现产区豆的风味特色。',
+        examplePinyin: 'Shǒuchōng kāfēi néng zuì chúncuì de zhǎnxiàn chǎnqū dòu de fēngwèi tèsè.',
+        exampleVi: 'Cà phê pour-over có thể thể hiện rõ nét và thuần khiết nhất hương vị vùng trồng.'
+      },
+      {
+        id: 'vocab-07',
+        simplified: '咖啡师',
+        traditional: '咖啡師',
+        pinyin: 'kāfēishī',
+        meaningVi: 'Chuyên gia pha chế (Barista)',
+        hsk: 2,
+        type: 'Danh từ',
+        example: '咖啡师正在用平稳的水流进行闷蒸与萃取。',
+        examplePinyin: 'Kāfēishī zhèngzài yòng píngwěn de shuǐliú jìnxíng mènzhēng yǔ cuìqǔ.',
+        exampleVi: 'Barista đang dùng dòng nước ổn định để thực hiện giai đoạn ủ và chiết xuất.'
+      },
+      {
+        id: 'vocab-08',
+        simplified: '烘焙',
+        traditional: '烘焙',
+        pinyin: 'hōngbèi',
+        meaningVi: 'Rang cà phê / Nướng mộc',
+        hsk: 3,
+        type: 'Động từ',
+        example: '浅度烘焙能够完美保留咖啡豆明亮的花果酸香。',
+        examplePinyin: 'Qiǎndù hōngbèi nénggòu wánměi bǎoliú kāfēidòu míngliàng de huāguǒ suānxiāng.',
+        exampleVi: 'Rang sáng có thể giữ trọn vẹn hương hoa và vị chua trái cây sáng của hạt cà phê.'
+      }
+    ];
+
+    const DEFAULT_LESSONS_LIST = [
+      {
+        id: 'lesson-01',
+        title: 'Tại Quán Cà Phê (At the Coffee Shop)',
+        chineseTitle: '初入咖啡馆',
+        level: 1,
+        icon: '☕',
+        duration: '15 phút',
+        wordsCount: 8,
+        description: 'Làm quen với cách chào hỏi nhân viên, gọi cà phê nóng/đá cơ bản và hỏi giá thanh toán tại quầy bar.'
+      },
+      {
+        id: 'lesson-02',
+        title: 'Tùy Chỉnh Khẩu Vị (Customizing Drink)',
+        chineseTitle: '点单与口味选择',
+        level: 2,
+        icon: '🥛',
+        duration: '20 phút',
+        wordsCount: 12,
+        description: 'Học cách chọn độ ngọt, tỷ lệ đá, chọn sữa tươi hay sữa hạt và các kích cỡ ly khác nhau.'
+      },
+      {
+        id: 'lesson-03',
+        title: 'Phương Pháp Pha Thủ Công (Brewing Craft)',
+        chineseTitle: '手冲与萃取艺术',
+        level: 3,
+        icon: '🫖',
+        duration: '25 phút',
+        wordsCount: 15,
+        description: 'Làm quen thuật ngữ Pour-over, French Press, Cold Brew và các dụng cụ ấm rót, phễu lọc V60 chuyên nghiệp.'
+      },
+      {
+        id: 'lesson-04',
+        title: 'Vùng Cà Phê Vân Nam (Yunnan Terroir)',
+        chineseTitle: '云南咖啡的传奇',
+        level: 4,
+        icon: '🏔️',
+        duration: '30 phút',
+        wordsCount: 16,
+        description: 'Khám phá lịch sử trồng cà phê tại Bảo Sơn, Phổ Nhĩ và chuỗi cung ứng hạt đặc sản vươn tầm quốc tế.'
+      }
+    ];
+
+    // Guarantee global access
+    if (typeof window.VOCABULARY_DATA === 'undefined' || !Array.isArray(window.VOCABULARY_DATA)) {
+      window.VOCABULARY_DATA = DEFAULT_COFFEE_VOCAB;
+    }
+    if (typeof window.LESSONS_DATA === 'undefined' || !Array.isArray(window.LESSONS_DATA)) {
+      window.LESSONS_DATA = DEFAULT_LESSONS_LIST;
+    }
+
+    // 6 HSK Levels Meta Configuration
+    const HSK_LEVELS_META = [
+      {
+        level: 1,
+        title: 'HSK 1: Chào Hỏi & Gọi Cà Phê',
+        desc: '150 từ vựng. Bước vào quán cà phê, gọi đồ uống cơ bản, hỏi giá tiền và các con số thông dụng.',
+        badgeClass: 'badge-hsk1',
+        borderColor: '#2E7D32',
+        defaultTotalLessons: 4
+      },
+      {
+        level: 2,
+        title: 'HSK 2: Khẩu Vị & Thói Quen',
+        desc: '300 từ vựng. Miêu tả độ ngọt, đá, loại sữa, thói quen uống cà phê sáng và gặp gỡ bạn bè.',
+        badgeClass: 'badge-hsk2',
+        borderColor: '#1565C0',
+        defaultTotalLessons: 4
+      },
+      {
+        level: 3,
+        title: 'HSK 3: Kỹ Thuật Pha & Rang Xay',
+        desc: '600 từ vựng. Giao tiếp về phương pháp pha thủ công Pour-over, Cold Brew, máy pha Espresso và độ mịn xay.',
+        badgeClass: 'badge-hsk3',
+        borderColor: '#E65100',
+        defaultTotalLessons: 4
+      },
+      {
+        level: 4,
+        title: 'HSK 4: Vùng Trồng & Chuỗi Cung Ứng',
+        desc: '1200 từ vựng. Đọc hiểu thổ nhưỡng cao nguyên Vân Nam, quy trình sơ chế ướt, khô và thương mại công bằng.',
+        badgeClass: 'badge-hsk4',
+        borderColor: '#C62828',
+        defaultTotalLessons: 4
+      },
+      {
+        level: 5,
+        title: 'HSK 5: Triết Lý Nếm Thử & Cupping',
+        desc: '2500 từ vựng. Diễn đạt chuyên sâu về bánh xe mùi hương (flavor wheel), đánh giá body, acidity và hậu vị.',
+        badgeClass: 'badge-hsk5',
+        borderColor: '#6A1B9A',
+        defaultTotalLessons: 3
+      },
+      {
+        level: 6,
+        title: 'HSK 6: Kinh Doanh & Đổi Mới Cà Phê Số',
+        desc: '5000+ từ vựng. Đọc báo cáo tài chính, đàm phán xuất nhập khẩu và phân tích cuộc cách mạng chuỗi cà phê công nghệ.',
+        badgeClass: 'badge-hsk6',
+        borderColor: '#4E342E',
+        defaultTotalLessons: 3
+      }
+    ];
+
+    /* ============================================================
+       INITIALIZATION ON DOM CONTENT LOADED
+       ============================================================ */
+    document.addEventListener('DOMContentLoaded', () => {
+      initHeroStats();
+      initDailyLearning();
+      renderHSKCards();
+      renderFeaturedVocab();
+      renderFeaturedLessons();
+      initPersonalStats();
+    });
+
+    /* 1. Hero Dynamic Stats */
+    function initHeroStats() {
+      const vocabList = window.VOCABULARY_DATA || DEFAULT_COFFEE_VOCAB;
+      const lessonsList = window.LESSONS_DATA || DEFAULT_LESSONS_LIST;
+
+      const wordsStatEl = document.getElementById('hero-words-stat');
+      const lessonsStatEl = document.getElementById('hero-lessons-stat');
+
+      if (wordsStatEl) {
+        wordsStatEl.textContent = vocabList.length > 50 ? `${vocabList.length}+` : `${vocabList.length}`;
+      }
+      if (lessonsStatEl) {
+        lessonsStatEl.textContent = lessonsList.length > 10 ? `${lessonsList.length}+` : `${lessonsList.length}`;
+      }
+    }
+
+    /* 2. Daily Learning Progress */
+    function initDailyLearning() {
+      // Date formatting for header
+      const todayDateEl = document.getElementById('daily-today-date');
+      if (todayDateEl) {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        todayDateEl.textContent = `Hôm nay, ${now.toLocaleDateString('vi-VN', options)}. Nhâm nhi cà phê và tiến bước!`;
+      }
+
+      // StorageManager Daily Study & Streak
+      const todayStats = StorageManager.getTodayStudy();
+      const streakData = StorageManager.getStreak();
+      const profile = StorageManager.getProfile();
+      const dailyGoal = profile.dailyGoal || 10;
+
+      // Streak
+      const streakCountEl = document.getElementById('daily-streak-count');
+      if (streakCountEl) {
+        streakCountEl.textContent = `${streakData.currentStreak || 0} Ngày`;
+      }
+
+      // Words Today
+      const wordsNumEl = document.getElementById('daily-words-num');
+      const wordsBarEl = document.getElementById('daily-words-bar');
+      const wordsGoalTextEl = document.getElementById('daily-words-goal-text');
+      const wordsCount = todayStats.wordsLearned || 0;
+
+      if (wordsNumEl) wordsNumEl.textContent = wordsCount;
+      if (wordsBarEl) {
+        const pct = Math.min(Math.round((wordsCount / dailyGoal) * 100), 100);
+        wordsBarEl.style.width = `${pct}%`;
+      }
+      if (wordsGoalTextEl) {
+        wordsGoalTextEl.textContent = `Mục tiêu: ${wordsCount}/${dailyGoal} từ hôm nay`;
+      }
+
+      // Lessons Today
+      const lessonsNumEl = document.getElementById('daily-lessons-num');
+      const lessonsBarEl = document.getElementById('daily-lessons-bar');
+      const lessonsGoalTextEl = document.getElementById('daily-lessons-goal-text');
+      const lessonsCount = todayStats.lessonsCompleted || 0;
+
+      if (lessonsNumEl) lessonsNumEl.textContent = lessonsCount;
+      if (lessonsBarEl) {
+        const pct = Math.min(Math.round((lessonsCount / 1) * 100), 100);
+        lessonsBarEl.style.width = `${pct}%`;
+      }
+      if (lessonsGoalTextEl) {
+        lessonsGoalTextEl.textContent = lessonsCount > 0 ? '✓ Đã đạt mục tiêu bài học' : 'Mục tiêu: Hoàn thành 1 bài';
+      }
+
+      // Quizzes Today
+      const quizzesNumEl = document.getElementById('daily-quizzes-num');
+      const quizzesBarEl = document.getElementById('daily-quizzes-bar');
+      const quizzesGoalTextEl = document.getElementById('daily-quizzes-goal-text');
+      const quizzesCount = todayStats.quizzesTaken || 0;
+
+      if (quizzesNumEl) quizzesNumEl.textContent = quizzesCount;
+      if (quizzesBarEl) {
+        const pct = Math.min(Math.round((quizzesCount / 1) * 100), 100);
+        quizzesBarEl.style.width = `${pct}%`;
+      }
+      if (quizzesGoalTextEl) {
+        quizzesGoalTextEl.textContent = quizzesCount > 0 ? `${quizzesCount} lượt quiz đã hoàn thành` : 'Thử thách 1 bài quiz';
+      }
+    }
+
+    /* 3. Render HSK Cards with Real Data */
+    function renderHSKCards() {
+      const container = document.getElementById('hsk-cards-container');
+      if (!container) return;
+
+      const completedLessons = StorageManager.getCompletedLessons() || [];
+      const allLessons = window.LESSONS_DATA || DEFAULT_LESSONS_LIST;
+
+      const html = HSK_LEVELS_META.map(meta => {
+        // Calculate lessons belonging to this level
+        const levelLessons = allLessons.filter(l => l.level === meta.level);
+        const totalInLevel = Math.max(levelLessons.length, meta.defaultTotalLessons);
+        const completedInLevel = levelLessons.filter(l => completedLessons.includes(l.id)).length;
+        const progressPct = totalInLevel > 0 ? Math.round((completedInLevel / totalInLevel) * 100) : 0;
+
+        return `
+          <div class="hsk-card scroll-animate" data-level="${meta.level}" onclick="window.location.href='pages/lessons.html?level=${meta.level}'" style="border-left-color: ${meta.borderColor};">
+            <div class="hsk-card-badge-row">
+              <span class="hsk-number-label">HSK ${meta.level}</span>
+              <span class="badge ${meta.badgeClass}">Cấp Độ ${meta.level}</span>
+            </div>
+            <h3 class="hsk-card-title">${meta.title}</h3>
+            <p class="hsk-card-desc">${meta.desc}</p>
+            <div>
+              <div class="hsk-progress-info">
+                <span>Tiến độ bài học</span>
+                <span>${completedInLevel}/${totalInLevel} bài (${progressPct}%)</span>
+              </div>
+              <div class="progress-bar progress-bar-sm">
+                <div class="progress-bar-fill" style="width: ${progressPct}%; background-color: ${meta.borderColor};"></div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = html;
+      App.observeElements('#hsk-cards-container .hsk-card');
+    }
+
+    /* 4. Render Featured Vocabulary (First 8 Items) */
+    function renderFeaturedVocab() {
+      const container = document.getElementById('featured-vocab-container');
+      if (!container) return;
+
+      const vocabList = window.VOCABULARY_DATA || DEFAULT_COFFEE_VOCAB;
+      const featured = vocabList.slice(0, 8);
+
+      container.innerHTML = featured.map(word => {
+        return App.renderVocabCard(word, { onClick: `showWordDetail('${word.id}')` });
+      }).join('');
+
+      App.observeElements('#featured-vocab-container .vocab-card');
+    }
+
+    /* 5. Render Featured Lessons (First 4 Items) */
+    function renderFeaturedLessons() {
+      const container = document.getElementById('featured-lessons-container');
+      if (!container) return;
+
+      const lessonsList = window.LESSONS_DATA || DEFAULT_LESSONS_LIST;
+      const featured = lessonsList.slice(0, 4);
+
+      container.innerHTML = featured.map(lesson => {
+        const isDone = StorageManager.isLessonCompleted(lesson.id);
+        const badgeClass = App.getHSKBadgeClass(lesson.level);
+        const badgeLabel = App.getHSKLabel(lesson.level);
+        const wordsCount = lesson.wordsCount || (lesson.words ? lesson.words.length : 10);
+
+        return `
+          <article class="lesson-card scroll-animate" onclick="window.location.href='pages/lesson-detail.html?id=${lesson.id}'" style="cursor: pointer;">
+            <div class="lesson-card-image">
+              <span>${lesson.icon || '☕'}</span>
+              ${isDone ? '<span class="lesson-completed-badge">✓ Đã Hoàn Thành</span>' : ''}
+            </div>
+            <div class="lesson-card-body">
+              <div class="lesson-card-meta">
+                <span class="badge ${badgeClass}">${badgeLabel}</span>
+                <span style="font-size: var(--text-xs); color: var(--muted);">⏱️ ${lesson.duration || '15 phút'}</span>
+                <span style="font-size: var(--text-xs); color: var(--muted);">📖 ${wordsCount} từ</span>
+              </div>
+              <h4>${lesson.title}</h4>
+              <p>${lesson.description}</p>
+              <div class="lesson-card-footer">
+                <span style="font-size: var(--text-xs); font-weight: 500; color: ${isDone ? 'var(--success)' : 'var(--muted)'};">
+                  ${isDone ? '✓ Hoàn thành 100%' : 'Chưa bắt đầu'}
+                </span>
+                <a href="pages/lesson-detail.html?id=${lesson.id}" class="btn btn-sm ${isDone ? 'btn-secondary' : 'btn-primary'}" onclick="event.stopPropagation()">
+                  ${isDone ? 'Ôn Lại' : 'Học Ngay'} →
+                </a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      App.observeElements('#featured-lessons-container .lesson-card');
+    }
+
+    /* 6. Learning Statistics Counter Animation */
+    function initPersonalStats() {
+      const totalWords = StorageManager.getLearnedWordsCount();
+      const completedLessons = StorageManager.getCompletedLessons().length;
+      const avgQuizScore = StorageManager.getAverageQuizScore();
+      const streakDays = StorageManager.getStreak().currentStreak || 0;
+
+      // Animate numbers smoothly
+      animateValue('stats-total-words', totalWords, 1200, '');
+      animateValue('stats-completed-lessons', completedLessons, 1200, '');
+      animateValue('stats-avg-quiz', avgQuizScore, 1200, '%');
+      animateValue('stats-streak-days', streakDays, 1200, ' Ngày');
+    }
+
+    function animateValue(elementId, targetValue, duration = 1000, suffix = '') {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+
+      if (targetValue === 0) {
+        el.textContent = `0${suffix}`;
+        return;
+      }
+
+      const start = 0;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeOut * targetValue);
+
+        el.textContent = `${current}${suffix}`;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = `${targetValue}${suffix}`;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    /* ============================================================
+       INTERACTIVE FUNCTIONS: FAVORITES & WORD DETAIL MODAL
+       ============================================================ */
+
+    // Toggle Favorite Word
+    window.toggleFav = function(wordId, buttonEl) {
+      const isFav = StorageManager.toggleFavorite(wordId);
+      if (buttonEl) {
+        buttonEl.classList.toggle('active', isFav);
+        buttonEl.innerHTML = isFav ? '❤️' : '🤍';
+        buttonEl.setAttribute('aria-label', isFav ? 'Bỏ yêu thích' : 'Thêm yêu thích');
+      }
+
+      App.showToast(
+        isFav ? 'Đã thêm từ vào danh sách yêu thích' : 'Đã xóa từ khỏi danh sách yêu thích',
+        isFav ? 'success' : 'default'
+      );
+    };
+
+    // Show Word Detail in Modal
+    window.showWordDetail = function(wordId) {
+      const vocabList = window.VOCABULARY_DATA || DEFAULT_COFFEE_VOCAB;
+      const word = vocabList.find(w => w.id === wordId);
+      if (!word) return;
+
+      const body = document.getElementById('word-detail-body');
+      const learnToggleBtn = document.getElementById('modal-learn-toggle-btn');
+      if (!body) return;
+
+      const isLearned = StorageManager.isWordLearned(word.id);
+      const isFav = StorageManager.isFavorite(word.id);
+      const levelLabel = App.getHSKLabel(word.hsk);
+      const badgeClass = App.getHSKBadgeClass(word.hsk);
+
+      body.innerHTML = `
+        <div class="modal-char-display">
+          <div class="modal-char-chinese">${word.simplified}</div>
+          <div class="modal-char-pinyin">
+            <span>${word.pinyin}</span>
+            <button class="audio-btn" onclick="App.speak('${word.simplified}')" aria-label="Nghe phát âm" title="Phát âm">
+              🔊
+            </button>
+          </div>
+          <div class="modal-char-meaning">${word.meaningVi}</div>
+          <div style="display:flex; justify-content:center; gap:8px; margin-top:12px;">
+            <span class="badge ${badgeClass}">${levelLabel}</span>
+            <span class="badge badge-coffee">${word.type}</span>
+            ${word.traditional && word.traditional !== word.simplified ? `<span class="badge" style="background:#eee;color:#555;">Phồn thể: ${word.traditional}</span>` : ''}
+          </div>
+        </div>
+
+        <div>
+          <div style="font-weight:600; font-size:var(--text-sm); color:var(--coffee-brown); margin-bottom:6px;">
+            Ví dụ thực tế trong quán cà phê:
+          </div>
+          <div class="modal-example-box">
+            <div style="font-family:var(--font-chinese); font-size:1.15rem; font-weight:500; color:var(--espresso);">
+              ${word.example || '我喜欢喝咖啡。'}
+            </div>
+            <div style="font-size:var(--text-sm); color:var(--caramel); font-style:italic; margin-top:4px;">
+              ${word.examplePinyin || 'Wǒ xǐhuan hē kāfēi.'}
+            </div>
+            <div style="font-size:var(--text-sm); color:var(--coffee-brown); margin-top:4px;">
+              ${word.exampleVi || 'Tôi thích uống cà phê.'}
+            </div>
+          </div>
+        </div>
+      `;
+
+      if (learnToggleBtn) {
+        updateLearnBtnState(learnToggleBtn, isLearned);
+
+        learnToggleBtn.onclick = () => {
+          const currentlyLearned = StorageManager.isWordLearned(word.id);
+          if (currentlyLearned) {
+            StorageManager.markWordUnlearned(word.id);
+            updateLearnBtnState(learnToggleBtn, false);
+            App.showToast(`Đã bỏ đánh dấu "${word.simplified}"`, 'default');
+          } else {
+            StorageManager.markWordLearned(word.id);
+            updateLearnBtnState(learnToggleBtn, true);
+            App.showToast(`Đã thuộc từ "${word.simplified}"! +1 từ vựng`, 'success');
+          }
+          // Refresh views
+          renderFeaturedVocab();
+          initDailyLearning();
+          initPersonalStats();
+        };
+      }
+
+      App.openModal('word-detail-modal');
+    };
+
+    function updateLearnBtnState(btn, isLearned) {
+      if (isLearned) {
+        btn.textContent = '✓ Đã Học (Bấm để hủy)';
+        btn.className = 'btn btn-secondary';
+      } else {
+        btn.textContent = '✓ Đánh Dấu Đã Học';
+        btn.className = 'btn btn-primary';
+      }
+    }
+  </script>
+</body>
+</html>

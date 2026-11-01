@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Bài Học – COFFEE 中文</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <nav id="main-nav"></nav>
+
+  <main class="page-main">
+    <div class="page-header">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="../index.html">Trang chủ</a>
+          <span class="separator">›</span>
+          <span>Bài học</span>
+        </div>
+        <h1 class="page-title">📚 Lộ Trình Bài Học Theo Cấp Độ HSK</h1>
+        <p class="page-description">
+          12 bài học bài bản từ HSK 1 đến HSK 6 gắn kết với hành trình khám phá cà phê: từ order tại quầy, chiết xuất Espresso, Pour-over đến kinh doanh xuất nhập khẩu.
+        </p>
+      </div>
+    </div>
+
+    <section class="section container">
+      <div class="flex items-center gap-3 mb-8 overflow-x-auto pb-2" id="levelFilter"></div>
+      <div id="lessonsGrid"></div>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../data/vocabulary.js"></script>
+  <script src="../data/lessons.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/lessons.js"></script>
+</body>
+</html>

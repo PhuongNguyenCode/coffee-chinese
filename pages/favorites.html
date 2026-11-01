@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Từ Vựng Yêu Thích – COFFEE 中文</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <nav id="main-nav"></nav>
+
+  <main class="page-main">
+    <div class="page-header">
+      <div class="container">
+        <div class="page-breadcrumb">
+          <a href="../index.html">Trang chủ</a>
+          <span class="separator">›</span>
+          <span>Từ vựng yêu thích</span>
+        </div>
+        <h1 class="page-title">❤️ Danh Sách Từ Vựng Yêu Thích</h1>
+        <p class="page-description">
+          Bộ sưu tập những thuật ngữ, từ vựng và câu thoại cà phê mà bạn đã lưu lại để ôn tập chuyên sâu.
+        </p>
+      </div>
+    </div>
+
+    <section class="section container">
+      <!-- Bộ lọc và tìm kiếm -->
+      <div class="filter-bar mb-6">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="favSearchInput" class="form-input" placeholder="Tìm trong danh sách yêu thích...">
+        </div>
+        <div class="filter-group">
+          <label for="favTopicSelect" class="filter-label">Chủ đề:</label>
+          <select id="favTopicSelect" class="form-select">
+            <option value="all">Tất cả chủ đề</option>
+          </select>
+        </div>
+        <div id="favCountBadge" class="text-sm font-semibold text-muted ml-auto"></div>
+      </div>
+
+      <!-- Danh sách từ yêu thích -->
+      <div id="favoritesGrid"></div>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../data/vocabulary.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/vocabulary.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('favoritesGrid');
+      const searchInput = document.getElementById('favSearchInput');
+      const topicSelect = document.getElementById('favTopicSelect');
+      const countBadge = document.getElementById('favCountBadge');
+
+      if (typeof TOPIC_LIST !== 'undefined' && topicSelect) {
+        TOPIC_LIST.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.id;
+          opt.textContent = `${t.icon} ${t.nameVi}`;
+          topicSelect.appendChild(opt);
+        });
+      }
+
+      function renderFavorites() {
+        const favIds = StorageManager.getFavorites();
+        let words = favIds.map(id => App.getVocabById(id)).filter(Boolean);
+
+        const q = searchInput.value.trim().toLowerCase();
+        if (q) {
+          words = words.filter(w =>
+            w.simplified.includes(q) ||
+            w.pinyin.toLowerCase().includes(q) ||
+            w.meaningVi.toLowerCase().includes(q)
+          );
+        }
+
+        const selTopic = topicSelect.value;
+        if (selTopic !== 'all') {
+          words = words.filter(w => w.topic === selTopic);
+        }
+
+        countBadge.textContent = `${words.length} từ yêu thích`;
+
+        if (words.length === 0) {
+          grid.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🤍</div>
+              <h3>Chưa có từ vựng yêu thích</h3>
+              <p>Hãy bấm vào biểu tượng trái tim ở các thẻ từ vựng để lưu lại vào danh sách này.</p>
+              <a href="vocabulary.html" class="btn btn-primary mt-4">Khám Phá Từ Vựng →</a>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = `
+          <div class="grid grid-3 gap-4 vocab-grid">
+            ${words.map(w => App.renderVocabCard(w)).join('')}
+          </div>
+        `;
+
+        App.observeElements('.scroll-animate');
+      }
+
+      searchInput.addEventListener('input', App.debounce(renderFavorites, 250));
+      topicSelect.addEventListener('change', renderFavorites);
+
+      window.addEventListener('storage', renderFavorites);
+      renderFavorites();
+    });
+  </script>
+</body>
+</html>

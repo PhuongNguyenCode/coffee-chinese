@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thẻ Ghi Nhớ Flashcards – COFFEE 中文</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <nav id="main-nav"></nav>
+
+  <main class="page-main">
+    <div class="page-header text-center">
+      <div class="container">
+        <div class="page-breadcrumb justify-center">
+          <a href="../index.html">Trang chủ</a>
+          <span class="separator">›</span>
+          <span>Luyện tập</span>
+          <span class="separator">›</span>
+          <span>Flashcards</span>
+        </div>
+        <h1 class="page-title mt-2">🃏 Thẻ Học Ghi Nhớ 3D</h1>
+        <p class="page-description mx-auto">
+          Lật thẻ trực quan, ghi nhớ sâu chữ Hán, Pinyin và ví dụ thực tế. Sử dụng phím mũi tên và phím Cách (Space) để lướt thẻ nhanh chóng.
+        </p>
+      </div>
+    </div>
+
+    <section class="section container">
+      <!-- Bộ lọc -->
+      <div id="flashcardFilters" class="mb-8"></div>
+
+      <!-- Khung thẻ chính -->
+      <div id="flashcardBox" class="mb-8"></div>
+
+      <!-- Điều khiển và Trạng thái -->
+      <div class="flex flex-col items-center gap-4 max-w-lg mx-auto">
+        <div class="flex items-center gap-4">
+          <button id="prevCardBtn" class="btn btn-secondary" title="Phím mũi tên Trái">← Thẻ trước</button>
+          <div id="cardCounter" class="font-semibold text-lg" style="color:var(--caramel-dark);">0 / 0</div>
+          <button id="nextCardBtn" class="btn btn-secondary" title="Phím mũi tên Phải">Thẻ sau →</button>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button id="markKnownBtn" class="btn btn-primary">✓ Đánh dấu Đã thuộc</button>
+          <button id="autoPlayBtn" class="btn btn-secondary">▶ Tự động chuyển thẻ</button>
+        </div>
+
+        <div class="text-xs text-muted mt-2 text-center">
+          💡 Mẹo bàn phím: <b>[Space]</b> Lật thẻ &nbsp;|&nbsp; <b>[←]</b> Thẻ trước &nbsp;|&nbsp; <b>[→]</b> Thẻ tiếp theo
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../data/vocabulary.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/flashcards.js"></script>
+</body>
+</html>

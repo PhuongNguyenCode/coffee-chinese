@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hội Thoại Quán Cà Phê – COFFEE 中文</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+  <nav id="main-nav"></nav>
+
+  <main class="page-main">
+    <div class="page-header text-center">
+      <div class="container">
+        <div class="page-breadcrumb justify-center">
+          <a href="../index.html">Trang chủ</a>
+          <span class="separator">›</span>
+          <span>Luyện tập</span>
+          <span class="separator">›</span>
+          <span>Hội thoại</span>
+        </div>
+        <h1 class="page-title mt-2">💬 Tình Huống Giao Tiếp & Nhập Vai</h1>
+        <p class="page-description mx-auto">
+          10 tình huống thực tế sinh động tại quán cà phê: từ gọi món, đổi sữa hạt, chỉnh lượng đường, đến đàm đạo triết lý thiết kế và kinh doanh.
+        </p>
+      </div>
+    </div>
+
+    <section class="section container">
+      <div class="content-with-sidebar">
+        <!-- Sidebar danh sách 10 tình huống -->
+        <aside class="sidebar">
+          <h4 class="font-heading mb-4 px-2" style="font-size:var(--text-base);">📋 10 Kịch Bản Giao Tiếp</h4>
+          <div id="scenarioList" style="max-height:600px;overflow-y:auto;"></div>
+        </aside>
+
+        <!-- Sân khấu đối thoại chính -->
+        <div id="conversationStage"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../data/vocabulary.js"></script>
+  <script src="../data/conversations.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/conversation.js"></script>
+</body>
+</html>
